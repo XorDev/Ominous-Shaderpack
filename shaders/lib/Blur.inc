@@ -1,5 +1,5 @@
-#define Bloom_Quality 5 //[4 5 6 8]
-//#define X_Bloom // Bloom in an "X" shape
+#define Bloom_Quality 5 //[4 5 6 8] Controls the number of bloom samples per pass. Higher is much slower because: samples = Quality^2
+//#define X_Bloom // Bloom in an "X" shape. It's more sparkly, try it to see what I mean
 #define Bloom_Pass3 //Toggles the third, medium-radius bloom pass. Disabling this will improve performance
 #define Bloom_Pass4 //Toggles the fourth, high-radius bloom pass. Disabling this will improve performance
 

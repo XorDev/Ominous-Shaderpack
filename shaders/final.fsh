@@ -1,6 +1,7 @@
 #version 120
 
-#define Soften
+#define Bloom_Amount .5 // [.0, .2 .4 .5 .6 .8 1.]
+#define Soften // This softens the fog lighting
 
 uniform sampler2D depthtex1;
 uniform float near;
@@ -41,7 +42,7 @@ void main()
         tex5 = blur(colortex5,coord0,2.*gray);
     #endif
 
-    vec4 col = tex0+(tex1+tex2+tex3+tex4)*.5;
+    vec4 col = tex0+(tex1+tex2+tex3+tex4)*Bloom_Amount;
 
     //tex5 *= pow(vec4(dep/far),vec4(1,.5,.2,1)*4.)*2.;
     gl_FragData[0] = col+tex5;//*pow(l,vec4(1.5));//dep/far+col*0.;

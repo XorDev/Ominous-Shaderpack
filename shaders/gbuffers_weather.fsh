@@ -1,7 +1,7 @@
 #version 120
 
-#define Tex_Brightness 1. // [0. 1. 3. 5. 10. 20.] This controls the texture brightness in a short radius. Higher = brighter
-#define Tex_Range 10. // [5. 10. 20. 40. 60.] This controls the range that textures are visible (in meter units)
+#define Tex_Brightness 1. // [0. 1. 3. 5. 10. 20.]
+#define Tex_Range 10. // [5. 10. 20. 40. 60.]
 
 uniform sampler2D texture;
 uniform sampler2D lightmap;
@@ -20,7 +20,7 @@ void main()
     vec4 tex = color * texture2D(texture,coord0);
     float gray = dot(tex,vec4(.299,.587,.114,0));
     vec4 col = tex;
-    col.rgb = vec3(gray*gray)*max(1.-gl_FogFragCoord/Tex_Range,0.)*Tex_Brightness/100.;
+    col.rgb = vec3(gray*gray)*max(1.-gl_FogFragCoord/Tex_Range,0.)*Tex_Brightness/5.;
 
     col.rgb = mix(col.rgb,sqrt(entityColor.rgb),entityColor.a);
 	col.rgb += pow(coord1.x,6.)*(.2+.2*gray)+glow;

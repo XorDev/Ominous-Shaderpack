@@ -1,17 +1,17 @@
 #version 120
 
-#define Light_Quality 40 //[10 20 40 60 100 200]
-#define Soften
-#define Fog_Brightness 8 //[4 6 8 10 12]
-#define Water_Density 2. // [0. 1. 2. 3. 4. 5.]
+#define Light_Quality 40 // [10 20 40 60 100 200] Number of light volume samples. Higher = slower
+#define Soften // This softens the fog lighting
+#define Fog_Brightness 8 // [4 6 8 10 12 16] Total output brightness from the fog
+#define Water_Density 2. // [0. 1. 2. 3. 4. 5.] Fog density in water
 
-#define Fog_Scale 5. // [1. 3. 5. 8.]
-#define Fog_Cycle_Speed 1. // [0. 1. 10. 500. 10000.]
-#define Fog_Min .2 // [.0 .1 .2 .3 .4]
-//#define Fog_Custom_Color
-#define Fog_Red .4 // [.0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1.]
-#define Fog_Green .5 // [.0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1.]
-#define Fog_Blue .8 // [.0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1.]
+#define Fog_Scale 5. // [1. 3. 5. 8.] A small scale makes the color changes more frequent. Higher makes them more rare.
+#define Fog_Cycle_Speed 1. // [0. 1. 10. 500. 10000.] This controls the rate the fog changes over time. By default it takes 100s of days
+#define Fog_Min .2 // [.0 .1 .2 .3 .4] //Fog minimum brightness. This sets how bright it is in the shadows
+//#define Fog_Custom_Color If enabled, it uses the custom red, green and blue fog colors below.
+#define Fog_Red .4 // [.0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1.] Red brightness between 0 and 1
+#define Fog_Green .5 // [.0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1.] Green brightness between 0 and 1
+#define Fog_Blue .8 // [.0 .1 .2 .3 .4 .5 .6 .7 .8 .9 1.] Blue brightness between 0 and 1
 
 uniform sampler2D depthtex0;
 uniform sampler2D depthtex1;
